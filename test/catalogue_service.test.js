@@ -34,7 +34,28 @@ describe("catalogueService", () => {
 
     test("returns number of books containing a keyword", () => {
       expect(catalogueService.countBooksByKeyword("Normal")).toBe(2);
-    })
+    });
+
+    test("returns number of books containing a keyword", () => {
+      expect(catalogueService.countBooksByKeyword("pineapple")).toBe(0);
+    });
+
+    // Function treats number as string. Makes sense to do this if this is how user would search for a title.
+    test("returns number of books containing a keyword", () => {
+      expect(catalogueService.countBooksByKeyword(2666)).toBe(1);
+    });
+
+    test("returns number of books containing a keyword", () => {
+      expect(catalogueService.countBooksByKeyword(14)).toBe(0);
+    });
+
+    test("returns number of books containing a keyword", () => {
+      expect(catalogueService.countBooksByKeyword(true)).toBe(0);
+    });
+
+    test("returns number of books containing a keyword", () => {
+      expect(catalogueService.countBooksByKeyword([1, 2, 3])).toBe(0);
+    });
 });
 });
 

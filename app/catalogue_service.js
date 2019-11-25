@@ -55,8 +55,7 @@ function countBooksByKeyword(keyword) {
   // Works, but is case sensitive. Need to fix.
   let bookCount = 0;
   for (let i = 0; i < catalogue.length; i++) {
-    let book = catalogue[i];
-    if (book.includes(keyword)) {
+    if (catalogue[i].includes(keyword)) {
       bookCount++;
     }
   } return bookCount;
