@@ -59,10 +59,15 @@ function countBooksByKeyword(keyword) {
       bookCount++;
     }
   } return bookCount;
-}
+};
 
 function getBooksByAuthor(author) {
   // Your code here
+  // tried to make it work with a === but couldn't figure out how
+  const authorCollection = catalogue.filter(function(books) {
+    return books.includes(author);
+  });
+  return authorCollection;
 }
 
 module.exports = {
