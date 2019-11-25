@@ -40,7 +40,7 @@ function checkBook(book) {
 function countBooksByFirstLetter(letter) {
   // Your code here
   // For each item in array, check first letter against given letter
-  // This works but I don't understand why; line 44 is confusing me
+  // This works but I don't understand why; line 44 is confusing me **update - catalogue.map(x => x[0]) changes entire catalogue to array of only first letters, so only has to loop through that(?)
   const firstLetters = catalogue.map(x => x[0]);
   let count = 0
   for (let i = 0; i < firstLetters.length; i++) {

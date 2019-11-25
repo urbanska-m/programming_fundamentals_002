@@ -90,4 +90,6 @@ describe("catalogueService", () => {
   });
 });
 
+// Would like a convenient way to make all functions not case sensitive.
+
 
