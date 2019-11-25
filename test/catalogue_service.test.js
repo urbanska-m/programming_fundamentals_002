@@ -27,6 +27,7 @@ describe("catalogueService", () => {
     });
   });
 
+  //Only work if case sensitive
   describe("catalogueService.countBooksByKeyword", () => {
     test("returns number of books containing a keyword", () => {
       expect(catalogueService.countBooksByKeyword("Assassin")).toBe(3);
@@ -41,31 +42,51 @@ describe("catalogueService", () => {
     });
 
     // Function treats number as string. Makes sense to do this if this is how user would search for a title.
-    test("returns number of books containing a keyword", () => {
+    test("returns number of books containing given number as keyword", () => {
       expect(catalogueService.countBooksByKeyword(2666)).toBe(1);
     });
 
-    test("returns number of books containing a keyword", () => {
+    test("returns 0 if keyword is a number that doesn't appear in any titles", () => {
       expect(catalogueService.countBooksByKeyword(14)).toBe(0);
     });
 
-    test("returns number of books containing a keyword", () => {
+    test("returns 0 if keyword is a boolean", () => {
       expect(catalogueService.countBooksByKeyword(true)).toBe(0);
     });
 
-    test("returns number of books containing a keyword", () => {
+    test("returns 0 if keyword is an array", () => {
       expect(catalogueService.countBooksByKeyword([1, 2, 3])).toBe(0);
     });
 });
 
   describe("catalogueService.getBooksByAuthor", () => {
-    test("return a list of books by a given author", () => {
+    test("returns a list of books by a given author", () => {
       expect(catalogueService.getBooksByAuthor("Charles Dickens")).toEqual([
         "A Tale of Two Cities by Charles Dickens",
         "Oliver Twist by Charles Dickens",
-        "Great Expectations by Charles Dickens"
-      ]);
+        "Great Expectations by Charles Dickens"]);
     });
+
+    test("returns empty array when author not given", () => {
+      expect(catalogueService.getBooksByAuthor()).toEqual([]);
+    });
+
+    test("returns a list of books by a given author, first name only", () => {
+      expect(catalogueService.getBooksByAuthor("Charles")).toEqual([
+        "A Tale of Two Cities by Charles Dickens",
+        "Oliver Twist by Charles Dickens",
+        "Great Expectations by Charles Dickens",
+        "The Origin of Species by Charles Darwin"]);
+      });
+
+    test("returns a list of books by a given author, last name only", () => {
+      expect(catalogueService.getBooksByAuthor("Mantel")).toEqual([
+        "Wolf Hall by Hilary Mantel",
+        "Bring Up The Bodies by Hilary Mantel",
+        "A Place of Greater Safety by Hilary Mantel",
+        "Giving Up the Ghost by Hilary Mantel",
+        "The Assassination of Margaret Thatcher by Hilary Mantel"]);
+    }); 
   });
 });
 
