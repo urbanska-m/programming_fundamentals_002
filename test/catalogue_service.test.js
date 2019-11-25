@@ -28,9 +28,13 @@ describe("catalogueService", () => {
   });
 
   describe("catalogueService.countBooksByKeyword", () => {
-    test("returns the number of books containing a keyword", () => {
-      expect(catalogueService.countBooksByKeyword("assassin")).toBe(3);
+    test("returns number of books containing a keyword", () => {
+      expect(catalogueService.countBooksByKeyword("Assassin")).toBe(3);
     });
+
+    test("returns number of books containing a keyword", () => {
+      expect(catalogueService.countBooksByKeyword("Normal")).toBe(2);
+    })
 });
 });
 

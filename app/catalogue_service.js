@@ -40,18 +40,26 @@ function checkBook(book) {
 function countBooksByFirstLetter(letter) {
   // Your code here
   // For each item in array, check first letter against given letter
+  // This works but I don't understand why; line 44 is confusing me
   const firstLetters = catalogue.map(x => x[0]);
   let count = 0
   for (let i = 0; i < firstLetters.length; i++) {
     if (letter === firstLetters[i]) {
-      count += 1;
+      count++;
     }
   } return count;
 };
 
 function countBooksByKeyword(keyword) {
-  // Your code here
-  // 
+  // Loop through catalogue; find matching keyword; add 1 to count; do not kick out of loop when found.
+  // Works, but is case sensitive. Need to fix.
+  let bookCount = 0;
+  for (let i = 0; i < catalogue.length; i++) {
+    let book = catalogue[i];
+    if (book.includes(keyword)) {
+      bookCount++;
+    }
+  } return bookCount;
 }
 
 function getBooksByAuthor(author) {
